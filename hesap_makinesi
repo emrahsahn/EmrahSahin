@@ -1,0 +1,65 @@
+# hesap makinesi programı
+
+import time
+
+title = "Bu bir örnek hesap makinesi uygulamasıdır."
+entry = """
+(1) topla işlemi
+(2) fark işlemi
+(3) çarpım işlemi
+(4) bölme işlemi
+(5) karesini hesaplama işlemi
+(6) kare kök hesaplama işlemi
+Çıkış için bu rakamlardan farklı bir tuşa basın!
+"""
+
+writing = {
+    "1": "Toplama-Toplanacak değerlerin ilkini girin:",
+    "11": "Toplanacak değerlerin ikincisini girin:",
+    "2": "Fark-Çıkarılacak değerlerin ilkini girin:",
+    "22": "Çıkarılacak değerlerin ikincisini girin:",
+    "3": "Çarpım-Çarpılacak değerlerin ilkini girin:",
+    "33": "Çarpılacak değerlerin ikincisini girin:",
+    "4": "Bölme-Bölünen değeri girin:",
+    "44": "Bölen değeri girin:",
+    "5": "Üs Alma-Üssü alınacak değeri girin:",
+    "55": "Üs değerini girin:",
+    "6": "Kare Kök Alm-Kökü alınacak değeri girin:",
+    "66": "Kök derecesini girin:"
+}
+
+print(title, entry, sep="\n")
+
+while True:
+
+    choosing = input("Yapmak istediğiniz işlemin numarasını giriniz : ")
+
+    try:
+        if choosing in ["1", "2", "3", "4", "5", "6"]:
+            number1 = int(input("{}".format(writing[choosing].split("-")[1])))
+            if (choosing + choosing) in writing:
+                number2 = float(input("{}".format(writing.get(choosing + choosing))))
+            # get yerine [] kullansaydık islemislem olmadığında hata alırdık. Şimdi hata almayacağız
+            # Sadece null değeri geri dönecek
+    except:
+        print("Bir tamsayı girilmedi. Tekrar deneyin!\n")
+        continue
+
+    if choosing == "1":
+        result = number1 + number2
+    elif choosing == "2":
+        result = number1 - number2
+    elif choosing == "3":
+        result = number1 * number2
+    elif choosing == "4":
+        result = number1 / number2
+    elif choosing == "5":
+        result = number1 ** number2
+    elif choosing == "6":
+        result = number1 ** (1/number2)
+    else:
+        print("Kabul edilen bir işlem numarası girmediniz! Program kapatılıyor ")
+        time.sleep(4)
+        break
+
+    print("{} işleminin sonucu olarak {} değeri bulunmuştur.\n".format(writing[choosing].split("-")[0], result))
