@@ -1,0 +1,2 @@
+# EmrahSahin
+#python kodu 
