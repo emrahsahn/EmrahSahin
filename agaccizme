@@ -1,0 +1,63 @@
+# random draw tree program
+import random
+
+class Tree():
+    def __init__(self):
+        pass
+
+    def start(self,age):
+        try:
+            print("Draw Tree Program")
+
+
+            tour = random.randrange(2)
+
+            if tour == 1: # will draw a tree
+                # leaves will be 2/3 size
+                leaf = round((age/3)*2)
+                for s in range(0,leaf):
+                    print(" "*(leaf-s),"*"*((s*2)+1)," "*(leaf-s))
+
+                # body will be 1/3 size
+                body = round(age/3)
+
+                for i in range(body):
+                    print(" "*(body*2-1),"||"," "*(body*2-1))
+
+            else: # will draw a rectangular tree
+                # leaves will ve 2/3 size
+                leaves1 = []
+                leaves2 = []
+                leaves3 = []
+
+                leaf = (age//3)*2
+
+                for s in range(leaf,0,-1):
+                    leaves2.append(" "*s + "*"*(leaf-s) + "*"*(leaf-s)+" "*s)
+
+                for s in range(1,leaf):
+                    leaves1.append(" "*s + "*"*(leaf-s) + "*"*(leaf-s)+" "*s)
+
+                leaves3 = leaves1 + leaves2
+                print(*leaves3,sep="\n")
+
+                # body will be 1/3 size
+                body = age//3
+
+                for i in range(body):
+                    print(" "*(body*2-2),"||"," "*(body*2-1))
+
+        except Exception as err:
+            print("Welcomed with an error: ",err)
+
+
+if __name__ == "__main__":
+    tree = Tree()
+    print("")
+    while True:
+        age = int(input("Please enter a number. İf you quit,you can write -1:\n"
+                           "A tree of the entered age will be draw: "))
+        if age != -1:
+            tree.start(age)
+        else:
+            break
