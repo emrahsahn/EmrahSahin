@@ -6,10 +6,6 @@ import sys
 import time
 
 
-
-
-
-
 class Describe():
     def __init__(self,number, type,special,color_of_earring,color_of_animal,whose,from_whom,price,phone_number,payment_method):
         self.number = number
