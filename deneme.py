@@ -319,11 +319,11 @@ class LibraryApp(QtWidgets.QWidget):
         self.button_person_who_does.setGeometry(550, 950, 230, 30)
         self.button_person_who_does.clicked.connect(self.person_who_does)
 
-        # self.button_bigger = QtWidgets.QPushButton("Yazıları BÜYÜLT!",self)
+        # self.button_bigger = QtWidgets.QPushButton("Yazıları BÜYÜLT!",self)        #button that maximize text
         # self.button_bigger.setGeometry(550, 450, 230, 30)
         # self.button_bigger.clicked.connect(self.text_bigger)
         #
-        # self.button_smaller = QtWidgets.QPushButton("Yazıları KÜÇÜLT!",self)
+        # self.button_smaller = QtWidgets.QPushButton("Yazıları KÜÇÜLT!",self)      #button that minimize text
         # self.button_smaller.setGeometry(550, 500, 230, 30)
         # self.button_smaller.clicked.connect(self.text_smaller)
 
@@ -645,12 +645,12 @@ class LibraryApp(QtWidgets.QWidget):
     # def text_bigger(self):
     #     if self.large <= 4:
     #         self.large += 1
-    #         self.__str__().setText(self.text_edit % self.boy)
+    #         self.__str__().setText(self.text_edit % self.boy)      #button that maximize text
     #
     # def text_smaller(self):
     #     if self.large >= 1:
     #         self.large -= 1
-    #         self.__str__.setText(self.text_edit % self.boy)
+    #         self.__str__.setText(self.text_edit % self.boy)      #button that minimize text
 
     def quit(self):
         self.close()
