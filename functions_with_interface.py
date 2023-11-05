@@ -13,48 +13,48 @@ class K_Kucuk(QDialog):
         self.setWindowTitle("K-Küçük İşlemi")
         self.setGeometry(100, 100, 400, 300)
 
-        k_kucuk_label = QLabel("K. Küçük İndeks Giriniz:")
-        self.k_kucuk_index_entry = QLineEdit()
-        k_kucuk_list_label = QLabel("Listeyi '2,3,4,5' Şeklinde Giriniz: ")
-        self.k_kucuk_list_entry = QLineEdit()
-        k_kucuk_button = QPushButton("K-Küçük Hesapla")
-        k_kucuk_button.clicked.connect(self.k_kucuk_calistir)
+        k_kucuk_label = QLabel("K. Küçük İndeks Giriniz:")   # giving the user information about what to enter
+        self.k_kucuk_index_entry = QLineEdit()               # place of input
+        k_kucuk_list_label = QLabel("Listeyi '2,3,4,5' Şeklinde Giriniz: ")   # giving the user information about how to enter
+        self.k_kucuk_list_entry = QLineEdit()                # place of input
+        k_kucuk_button = QPushButton("K-Küçük Hesapla")      # button of calculate   
+        k_kucuk_button.clicked.connect(self.k_kucuk_calistir)    # button connect to functions
 
-        self.sonuc_text = QTextEdit()
-        self.sonuc_text.setReadOnly(True)
+        self.sonuc_text = QTextEdit()                        # where the result will appear
+        self.sonuc_text.setReadOnly(True)                    # this place only readable
 
-        layout = QVBoxLayout()
-        layout.addWidget(k_kucuk_label)
+        layout = QVBoxLayout()                               # make a vertical layout
+        layout.addWidget(k_kucuk_label)                      # by one by add widget
         layout.addWidget(self.k_kucuk_index_entry)
         layout.addWidget(k_kucuk_list_label)
         layout.addWidget(self.k_kucuk_list_entry)
         layout.addWidget(k_kucuk_button)
         layout.addWidget(self.sonuc_text)
 
-        self.setLayout(layout)
+        self.setLayout(layout)                               # add layout in text place 
 
     def k_kucuk_calistir(self):
         try:
-            index = self.k_kucuk_index_entry.text()
-            liste = self.k_kucuk_list_entry.text().split(',')
-            liste = [int(x) for x in liste]
-            sonuc = self.k_kucuk(index, liste)
-            self.sonuc_text.setPlainText(f"K-Küçük Sonucu: {sonuc}")
+            index = self.k_kucuk_index_entry.text()                # input in the form of text
+            liste = self.k_kucuk_list_entry.text().split(',')      # input in the form of text
+            liste = [int(x) for x in liste]                        # convert integer each element of list with list comphreasion 
+            sonuc = self.k_kucuk(index, liste)                     # call the funciton by parameter
+            self.sonuc_text.setPlainText(f"K-Küçük Sonucu: {sonuc}")     # result is printed
         except ValueError:
-            error_box = QMessageBox()
+            error_box = QMessageBox()                              # if occur the error, this line will work
             error_box.setWindowTitle("Hata")
             error_box.setText("Hatalı Giriş! Lütfen doğru bir giriş yapın.")
-            error_box.exec_()
+            error_box.exec_()                                      # keeps the window open
 
-    def k_kucuk(self, index, liste):
-        index = int(index)
-        sorted_list = sorted(liste)
-        if 0 <= len(liste):
+    def k_kucuk(self, index, liste): 
+        index = int(index)                                         # convert integer from text
+        sorted_list = sorted(liste)                                # sorted the list
+        if 0 <= len(liste):                                        # comparison is made 
             if index <= -1:
-                k_kucuk_sonuc = sorted_list[index]
+                k_kucuk_sonuc = sorted_list[index]                 # the desired value is return to the user
                 return k_kucuk_sonuc
             else:
-                k_kucuk_sonuc = sorted_list[index-1]
+                k_kucuk_sonuc = sorted_list[index-1]               # the desired value is return to the user 
                 return k_kucuk_sonuc
 
 
