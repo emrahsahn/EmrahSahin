@@ -215,9 +215,9 @@ class GridWindow(QMainWindow):
                     savasci = self.assignWarrior(row, col)
                     print(savasci)
                     if savasci:
-                        print("değiştirme")
+                        # print("değiştirme")
                         self.updateGrid(self.oyun.getWorldState())
-                        print("buraya da giriyor")
+                        # print("buraya da giriyor")
                         break
 
                 # Tüm oyuncuların savaşçıları seçtiği durumda döngü sona erer
@@ -238,7 +238,7 @@ class GridWindow(QMainWindow):
                 i += 1
                 if self.player_count == 4:
                     self.player_colors1 = [QColor('green'), QColor('yellow'), QColor('red'), QColor('blue')]
-                    print(self.current_player_index)
+                    # print(self.current_player_index)
                     # print(self.player_count)
                     player_color = self.player_colors1[self.current_player_index]  # Sıradaki oyuncunun rengini al
                     self.current_player_index = int((self.current_player_index - 1) % self.player_count)  # Sıradaki oyuncuyu güncelle
@@ -252,11 +252,10 @@ class GridWindow(QMainWindow):
 
                 elif self.player_count == 3:
                     self.player_colors2 = [QColor('blue'), QColor('green'), QColor('red'), QColor('yellow')]
-                    print(self.current_player_index)
+                    # print(self.current_player_index)
                     # print(self.player_count)
                     player_color = self.player_colors2[self.current_player_index]  # Sıradaki oyuncunun rengini al
-                    self.current_player_index = int(
-                        (self.current_player_index - 1) % self.player_count)  # Sıradaki oyuncuyu güncelle
+                    self.current_player_index = int((self.current_player_index - 1) % self.player_count)  # Sıradaki oyuncuyu güncelle
 
                     # print(self.current_player_index)
 
@@ -269,8 +268,7 @@ class GridWindow(QMainWindow):
                     print(self.current_player_index)
                     # print(self.player_count)
                     player_color = self.player_colors3[self.current_player_index]  # Sıradaki oyuncunun rengini al
-                    self.current_player_index = int(
-                        (self.current_player_index - 1) % self.player_count)  # Sıradaki oyuncuyu güncelle
+                    self.current_player_index = int((self.current_player_index - 1) % self.player_count)  # Sıradaki oyuncuyu güncelle
 
                     # print(self.current_player_index)
 
