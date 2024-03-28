@@ -145,6 +145,7 @@ class Oyun:
         for i in range(self.oyuncu_sayisi):
             corner = random.choice(corners)
             savasci = Guard(corner[0], corner[1])
+            print(savasci)
             self.append_warrior(savasci)
             grid_window.selectCell(corner[0], corner[1])  # Köşe butonuna tıkla
             self.kose_haritasi[corner] = f"M{i + 1}"      # Köşe haritasına oyuncu sembolünü ekle
@@ -214,7 +215,9 @@ class GridWindow(QMainWindow):
                     savasci = self.assignWarrior(row, col)
                     print(savasci)
                     if savasci:
+                        print("değiştirme")
                         self.updateGrid(self.oyun.getWorldState())
+                        print("buraya da giriyor")
                         break
 
                 # Tüm oyuncuların savaşçıları seçtiği durumda döngü sona erer
@@ -231,7 +234,50 @@ class GridWindow(QMainWindow):
                 self.savasci.sembol = f"{self.savasci.sembol}"  # Oyuncu adı sembole eklenir
                 self.selected_warriors[player_name] = (self.savasci, row, col)  # Seçilen savaşçılar sözlüğe eklenir
                 self.buttons[row][col].setText(self.savasci.sembol)
+
                 i += 1
+                if self.player_count == 4:
+                    self.player_colors1 = [QColor('green'), QColor('yellow'), QColor('red'), QColor('blue')]
+                    print(self.current_player_index)
+                    # print(self.player_count)
+                    player_color = self.player_colors1[self.current_player_index]  # Sıradaki oyuncunun rengini al
+                    self.current_player_index = int((self.current_player_index - 1) % self.player_count)  # Sıradaki oyuncuyu güncelle
+
+                    # print(self.current_player_index)
+
+                    for r in range(max(0, row - 1), min(self.rows, row + 2)):
+                        for c in range(max(0, col - 1), min(self.columns, col + 2)):
+                            if (r, c) != (row, col):
+                                self.changeColor(r, c, player_color)
+
+                elif self.player_count == 3:
+                    self.player_colors2 = [QColor('blue'), QColor('green'), QColor('red'), QColor('yellow')]
+                    print(self.current_player_index)
+                    # print(self.player_count)
+                    player_color = self.player_colors2[self.current_player_index]  # Sıradaki oyuncunun rengini al
+                    self.current_player_index = int(
+                        (self.current_player_index - 1) % self.player_count)  # Sıradaki oyuncuyu güncelle
+
+                    # print(self.current_player_index)
+
+                    for r in range(max(0, row - 1), min(self.rows, row + 2)):
+                        for c in range(max(0, col - 1), min(self.columns, col + 2)):
+                            if (r, c) != (row, col):
+                                self.changeColor(r, c, player_color)
+                else:
+                    self.player_colors3 = [QColor('red'), QColor('blue'), QColor('green'), QColor('yellow')]
+                    print(self.current_player_index)
+                    # print(self.player_count)
+                    player_color = self.player_colors3[self.current_player_index]  # Sıradaki oyuncunun rengini al
+                    self.current_player_index = int(
+                        (self.current_player_index - 1) % self.player_count)  # Sıradaki oyuncuyu güncelle
+
+                    # print(self.current_player_index)
+
+                    for r in range(max(0, row - 1), min(self.rows, row + 2)):
+                        for c in range(max(0, col - 1), min(self.columns, col + 2)):
+                            if (r, c) != (row, col):
+                                self.changeColor(r, c, player_color)
                 return self.savasci  # Atanan savaşçıyı döndür
 
 
